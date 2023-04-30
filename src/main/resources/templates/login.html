@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/styles/login.css}">
+    <title>Log In</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+
+</head>
+<body>
+<!--<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>-->
+
+<div id="id01" class="modal">
+
+    <form id="myForm" class="modal-content" th:action="@{/api/login/post}" method="post">
+<!--        <div class="imgcontainer">-->
+<!--            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>-->
+<!--            <img src="img_avatar2.png" alt="Avatar" class="avatar">-->
+<!--        </div>-->
+        <div th:if="${param.error}">
+            Invalid Username and password.
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
+        <div class="container">
+            <input type="text" placeholder="Enter Email" name="username" required>
+
+            <input type="password" placeholder="Enter Password" name="password" required>
+            <input type="hidden" id="encryptedData" name="encryptedData" />
+            <button type="submit">Login</button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="encryptForm()" class="cancelbtn">Cancel</button>
+            <span class="psw"><a href="#">Forgot password?</a></span>
+        </div>
+    </form>
+</div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+<script>
+    // retrieve the secret key from the server
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/secretKey");
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            var secretKey = xhr.responseText;
+            console.log(secretKey);
+
+            // encrypt the form data with the secret key
+            function encryptForm() {
+                console.log("on click")
+                var form = document.getElementById("myForm");
+                var formData = new FormData(form);
+                var json = {};
+
+                formData.forEach(function(value, key){
+                    json[key] = value;
+                });
+
+                var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(json), secretKey).toString();
+                document.getElementById("encryptedData").value = ciphertext;
+                console.log(document.getElementById("encryptedData").value);
+                form.submit();
+            }
+        }
+    };
+    xhr.send();
+</script>
+
+</html>

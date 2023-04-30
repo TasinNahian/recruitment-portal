@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/styles/header.css}" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="topnav" th:fragment="header">
+    <a href="#" class="active">Career</a>
+    <a href="#">Current Openings</a>
+    <a href="#">Departments</a>
+    <a href="#">About Us</a>
+    <a href="#">Contact Us</a>
+    <div class="search-container">
+        <form action="#">
+            <input type="text" placeholder="Search Jobs" name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

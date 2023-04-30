@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="/styles/card-body.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<h2 style="text-align:center">Product Card</h2>
+<div class="flex-container" th:fragment="job-card-body" >
+    <div class="card" th:each="jobsdto:${showAllJobs}">
+        <img class="randImg" src=""/>
+        <h4 th:text="${jobsdto.job_title}">Front End Developer (12 March 2023)</h4>
+        <span>Job Deadline<p class="price" th:text="${jobsdto.job_deadline}">Vacancy: 02</p></span>
+        <p th:text="${jobsdto.job_overview}">Job Overview: Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim
+            lorem jeansum.</p>
+        <p>
+            <button th:onclick="|window.location.href='@{/showDetails(id=${jobsdto.job_id})}'|">Details</button>
+        </p>
+    </div>
+</div>
+</body>
+</html>

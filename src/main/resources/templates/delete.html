@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>Job Delete Form</h1>
+<form  th:action="@{/deletejob}" th:object="${jobsdto}" method="POST">
+  <p>Job Id: <input type = "text" name = "job_id"/></p>
+  <p><input type ="submit" value = "Delete"/></p>
+</form>
+</body>
+</html>
