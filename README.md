@@ -31,4 +31,4 @@ The project has jwt token auth feature generated with SHA-256 algorithm. Below a
 ***
 For the database **MySQL** database is used with the following design
 
-![Database EER](readmeImg/reccruitment_portal_schema_eer.PNG)
+![Database EER](readmeImg/reccruitment_portal_schema_eer.png)
