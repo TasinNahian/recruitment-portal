@@ -26,9 +26,6 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.SignatureException;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -69,7 +66,7 @@ public class SecurityConfig {
                 .csrf().disable()
                  .authorizeHttpRequests()
                  .requestMatchers("/js/**", "/styles/**").permitAll()
-                 .requestMatchers("/api/login/**").permitAll()
+                 .requestMatchers("/**").permitAll()  //for demo purpose all endpoints are premitted
                  .requestMatchers("/addjob").hasRole("SUPER_ADMIN")
                  .requestMatchers("/home").hasRole("USER")
                  .anyRequest().authenticated()

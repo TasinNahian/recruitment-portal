@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 
-public interface JobsController {
+public interface    JobsController {
     @GetMapping("/jobs/all")
     public String showAllJobs(Model model);
     @GetMapping("/alljobs/page={pageNo}")
