@@ -25,7 +25,7 @@ The project has jwt token auth feature generated with SHA-256 algorithm. Below a
 
 **Job Details**
 
-![Job Details](readmeImg/jobdetails.PNG)
+![Job Details](readmeImg/jobdetails.png)
 
 ## Database Design
 ***
